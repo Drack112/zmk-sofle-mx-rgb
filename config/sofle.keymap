@@ -26,10 +26,9 @@
     combos {
         compatible = "zmk,combos";
 
-        tomacos {
-            bindings = <&to 0>;
-            key-positions = <39 40 41>;
-            layers = <0 1 2 3 3>;
+        del {
+            bindings = <&kp DELETE>;
+            key-positions = <11 23>;
         };
     };
 
@@ -47,11 +46,11 @@
             //               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
 
             bindings = <
-&kp ESCAPE      &kp N1  &kp N2          &kp N3     &kp N4        &kp N5                                     &kp N6       &kp N7  &kp N8              &kp N9         &kp N0    &kp BACKSPACE
-&kp CAPSLOCK    &kp Q   &kp W           &kp E      &kp R         &kp T                                      &kp Y        &kp U   &kp I               &kp O          &kp P     &kp DELETE
-&kp TAB         &kp A   &kp S           &kp D      &kp F         &kp G                                      &kp H        &kp J   &kp K               &kp L          &kp SEMI  &kp SQT
-&kp LEFT_SHIFT  &kp Z   &kp X           &kp C      &kp V         &kp B      &kp C_MUTE    &kp C_PLAY_PAUSE  &kp B        &kp N   &kp M               &kp COMMA      &kp DOT   &kp SLASH
-                        &lt 3 CAPSLOCK  &kp RCTRL  &kp LEFT_ALT  &kp SPACE  &mo 1         &kp BACKSPACE     &lt 2 ENTER  &none   &kp RC(LEFT_ARROW)  &kp RC(RIGHT)
+&kp ESCAPE      &kp N1  &kp N2  &kp N3     &kp N4        &kp N5                                     &kp N6     &kp N7        &kp N8  &kp N9     &kp N0    &none
+&kp CAPSLOCK    &kp Q   &kp W   &kp E      &kp R         &kp T                                      &kp Y      &kp U         &kp I   &kp O      &kp P     &none
+&kp TAB         &kp A   &kp S   &kp D      &kp F         &kp G                                      &kp H      &kp J         &kp K   &kp L      &kp SEMI  &kp SQT
+&kp LEFT_SHIFT  &kp Z   &kp X   &kp C      &kp V         &kp B      &kp C_MUTE    &kp C_PLAY_PAUSE  &kp B      &kp N         &kp M   &kp COMMA  &kp DOT   &kp SLASH
+                        &mo 3   &kp RCTRL  &kp LEFT_ALT  &kp SPACE  &mo 1         &mo 2             &kp ENTER  &kp LEFT_GUI  &none   &none
             >;
 
             sensor-bindings =
@@ -116,8 +115,8 @@
 
             display-name = "adjust";
             bindings = <
-&none            &none            &none            &kp D            &bt BT_PRV       &bt BT_NXT                       &rgb_ug RGB_BRI  &rgb_ug RGB_SPI  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &none  &none
-&rgb_ug RGB_OFF  &none            &none            &kp C            &bt BT_CLR       &bt BT_CLR_ALL                   &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &rgb_ug RGB_HUD  &none            &none  &none
+&none            &none            &none            &none            &bt BT_PRV       &bt BT_NXT                       &rgb_ug RGB_BRI  &rgb_ug RGB_SPI  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &none  &none
+&rgb_ug RGB_OFF  &none            &none            &none            &bt BT_CLR       &bt BT_CLR_ALL                   &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &rgb_ug RGB_HUD  &none            &none  &none
 &rgb_ug RGB_ON   &rgb_ug RGB_EFF  &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &rgb_ug RGB_SPI  &rgb_ug RGB_BRI                  &none            &none            &none            &none            &none  &none
 &rgb_ug RGB_TOG  &rgb_ug RGB_EFR  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_SPD  &rgb_ug RGB_BRD  &none    &none  &none            &none            &none            &none            &none  &none
                                   &none            &none            &none            &none            &none    &none  &none            &none            &none            &none
