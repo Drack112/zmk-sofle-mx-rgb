@@ -176,8 +176,8 @@
             bindings = <
 &trans  &kp F1    &kp F2          &kp F3     &kp F4     &kp F5                      &kp F6          &kp F7           &kp F8            &kp F9             &kp F10  &kp F12
 &trans  &kp PIPE  &kp UNDERSCORE  &kp MINUS  &kp EQUAL  &kp PLUS                    &kp LEFT_BRACE  &kp RIGHT_BRACE  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp SQT  &kp BACKSLASH
-&trans  &none     &none           &none      &none      &none                       &none           &none            &none             &none              &trans   &kp SEMI
-&trans  &none     &none           &none      &none      &none     &trans    &trans  &none           &none            &none             &none              &none    &trans
+&trans  &trans    &trans          &trans     &trans     &trans                      &trans          &trans           &trans            &trans             &trans   &kp SEMI
+&trans  &trans    &trans          &trans     &trans     &trans    &trans    &trans  &trans          &trans           &trans            &trans             &trans   &trans
                   &trans          &trans     &trans     &trans    &trans    &trans  &trans          &trans           &trans            &trans
             >;
 
