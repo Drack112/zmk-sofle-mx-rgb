@@ -84,4 +84,3 @@
 
 #define PT_SQT          GRAVE           /* alias for PT_QUOT — single quote */
 #define PT_DQT          LS(GRAVE)       /* alias for PT_DQUOT — double quote */
-
