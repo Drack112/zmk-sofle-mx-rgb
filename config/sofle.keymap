@@ -54,8 +54,8 @@
      * ───────────────────────────────────────────────────────────── */
 
     behaviors {
-        /* tap = character  ·  hold = modifier */
 
+        /* tap = character  ·  hold = modifier */
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS";
@@ -67,7 +67,6 @@
         };
 
         /* single tap = (  ·  double tap = ) */
-
         td_paren: tap_dance_paren {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_PAREN";
@@ -77,7 +76,6 @@
         };
 
         /* single tap = [  ·  double tap = ] */
-
         td_bkt: tap_dance_bracket {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_BRACKET";
@@ -87,7 +85,6 @@
         };
 
         /* single tap = {  ·  double tap = } */
-
         td_brc: tap_dance_brace {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_BRACE";
@@ -150,13 +147,12 @@
         default_layer {
             display-name = "base";
             bindings = <
-&kp ESC       &kp N1          &kp N2     &kp N3        &kp N4  &kp N5                               &kp N6     &kp N7  &kp N8         &kp N9     &kp N0            &kp BACKSPACE
-&kp TAB       &kp Q           &kp W      &kp E         &kp R   &kp T                                &kp Y      &kp U   &kp I          &kp O      &kp P             &kp GRAVE
-&kp CAPSLOCK  &kp A           &kp S      &kp D         &kp F   &kp G                                &kp H      &kp J   &kp K          &kp L      &kp PT_C_CEDILLA  &hm PT_TILDE PT_ACUTE
-&kp LSHFT     &hm LEFT_GUI Z  &kp X      &kp C         &kp V   &kp B   &kp C_MUTE    &kp C_MUTE     &kp B      &kp N   &kp M          &kp COMMA  &kp DOT           &kp SLASH
-                              &kp LCTRL  &kp LEFT_ALT  &mo 3   &mo 1   &kp SPACE     &kp BACKSPACE  &kp ENTER  &mo 2   &kp RIGHT_ALT  &kp RCTRL
+&kp PT_QUOT  &kp N1          &kp N2  &kp N3      &kp N4        &kp N5              &kp N6            &kp N7        &kp N8                  &kp N9                        &kp N0                     &kp PT_MINUS
+&kp TAB      &kp Q           &kp W   &kp E       &kp R         &kp T               &kp Y             &kp U         &kp I                   &kp O                         &kp P                      &kp DEL
+&kp ESC      &kp A           &kp S   &kp D       &kp F         &kp G               &kp H             &kp J         &hm RIGHT_CONTROL K     &kp L                         &hm PT_TILDE PT_C_CEDILLA  &kp PT_TILDE
+&kp LSHFT    &hm LEFT_GUI Z  &kp X   &kp C       &kp V         &kp B     &kp C_MUTE  &kp C_MUTE      &kp N         &kp M                   &hm PT_BACKSLASH PT_COMMA     &hm PT_SLASH PT_DOT        &kp PT_SEMI   &kp RSHFT
+                             &kp LGUI  &kp LALT  &kp LCTRL   &lt 4 TAB  &lt 1 SPACE   &lt 2 BACKSPACE  &lt 3 ENTER  &kp BACKSPACE           &kp RCTRL                     &kp RALT
             >;
-
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
@@ -174,13 +170,12 @@
         lower_layer {
             display-name = "num";
             bindings = <
-&trans  &kp F1    &kp F2          &kp F3     &kp F4     &kp F5                      &kp F6          &kp F7           &kp F8            &kp F9             &kp F10  &kp F12
-&trans  &kp PIPE  &kp UNDERSCORE  &kp MINUS  &kp EQUAL  &kp PLUS                    &kp LEFT_BRACE  &kp RIGHT_BRACE  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp SQT  &kp BACKSLASH
-&trans  &trans    &trans          &trans     &trans     &trans                      &trans          &trans           &trans            &trans             &trans   &kp SEMI
-&trans  &trans    &trans          &trans     &trans     &trans    &trans    &trans  &trans          &trans           &trans            &trans             &trans   &trans
-                  &trans          &trans     &trans     &trans    &trans    &trans  &trans          &trans           &trans            &trans
+&kp F11      &kp F1           &kp F2     &kp F3        &kp F4        &kp F5              &kp F6            &kp F7           &kp F8          &kp F9        &kp F10                  &kp F12
+&kp TILDE    &kp N1           &kp N2     &kp N3        &kp N4        &kp N5              &kp N6            &kp N7           &kp N8          &kp N9        &kp N0                   &kp DEL
+&trans       &kp PT_EXCL      &kp PT_AT  &kp PT_HASH   &kp PT_DOLLAR &kp PT_PERCENT      &kp PT_CARET      &kp PT_AMPERSAND &kp PT_ASTERISK &kp PT_LPAR   &kp PT_RPAR              &kp PT_PIPE
+&trans       &kp PT_EQUAL     &kp PT_MINUS &kp PT_PLUS &kp PT_LBRC   &kp PT_RBRC &trans  &trans            &kp PT_LBKT      &kp PT_RBKT     &kp PT_SEMI   &kp PT_COLON             &hm PT_BACKSLASH PT_SLASH &trans
+                              &trans     &trans        &trans        &trans      &trans  &trans            &trans           &trans          &trans        &trans
             >;
-
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
@@ -198,6 +193,19 @@
          *   PT_CIRC   (row 2 second)    →  tap then a/e/o = â ê ô
          *   PT_TILDE  (base hold Ç)     →  tap then a/o = ã õ
          * ══════════════════════════════════════════════════════════ */
+
+        raise_layer {
+            display-name = "sym";
+            bindings = <
+&trans       &trans         &trans       &trans            &trans      &trans              &trans            &trans         &trans        &trans        &trans        &trans
+&trans       &kp PT_EXCL    &kp PT_AT    &kp PT_HASH       &kp PT_DOLLAR &kp PT_PERCENT    &kp PT_CARET      &kp PT_AMPERSAND &kp PT_ASTERISK &kp PT_LPAR  &kp PT_RPAR   &trans
+&trans       &kp PT_PIPE    &kp UNDER    &kp PT_MINUS      &kp PT_EQUAL  &kp PT_PLUS       &kp PT_LBRC       &kp PT_RBRC    &kp PT_LBKT   &kp PT_RBKT   &kp PT_ACUTE  &trans
+&trans       &kp PT_GRAVE   &kp PT_CIRC  &kp PT_BACKSLASH  &kp PT_LT   &kp PT_GT   &trans &trans            &kp PT_QMARK   &kp PT_DQT    &kp PT_COLON  &kp PT_SEMI   &kp PT_DOT    &trans
+                            &trans       &trans            &trans      &trans      &trans  &trans            &kp PT_SLASH   &kp PT_QUOT   &trans        &trans
+            >;
+            sensor-bindings = <&inc_dec_kp C_BRI_UP C_BRI_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
         /* ══════════════════════════════════════════════════════════
          * LAYER 3 — FUNCTION KEYS  (hold ENT)
          *
@@ -212,13 +220,12 @@
         adjust_layer {
             display-name = "fn";
             bindings = <
-&trans  &kp F1   &kp F2   &kp F3  &kp F4  &kp F5                    &kp F6  &kp F7          &kp F8          &kp F9           &kp F10  &trans
-&trans  &kp F11  &kp F12  &trans  &trans  &trans                    &trans  &trans          &kp UP_ARROW    &trans           &trans   &trans
-&trans  &trans   &trans   &trans  &trans  &trans                    &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans   &trans
-&trans  &trans   &trans   &trans  &trans  &trans  &trans    &trans  &trans  &kp HOME        &kp END         &trans           &trans   &bootloader
-                 &trans   &trans  &trans  &trans  &trans    &trans  &trans  &trans          &trans          &trans
+&trans  &kp F1   &kp F2   &kp F3  &kp F4  &kp F5          &kp F6  &kp F7          &kp F8          &kp F9          &kp F10  &trans
+&trans  &kp F11  &kp F12  &trans  &trans  &trans          &trans  &trans          &kp UP_ARROW    &trans          &trans   &trans
+&trans  &trans   &trans   &trans  &trans  &trans          &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW &trans   &trans
+&trans  &trans   &trans   &trans  &trans  &trans  &trans  &trans  &trans          &kp HOME        &kp END         &trans   &trans   &bootloader
+                 &trans   &trans  &trans  &trans  &trans  &trans  &trans          &trans          &trans          &trans
             >;
-
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
@@ -236,11 +243,11 @@
         bt_layer {
             display-name = "bt";
             bindings = <
-&none  &bt BT_SEL 0       &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4                     &none  &none  &none  &none  &none  &none
-&none  &bt BT_CLR         &bt BT_CLR_ALL   &none            &none            &none                            &none  &none  &none  &none  &none  &out OUT_TOG
-&none  &ext_power EP_TOG  &rgb_ug RGB_HUD  &rgb_ug RGB_HUI  &rgb_ug RGB_SAD  &rgb_ug RGB_SAI                  &none  &none  &none  &none  &none  &none
-&none  &rgb_ug RGB_BRD    &rgb_ug RGB_BRI  &none            &none            &rgb_ug RGB_TOG  &none    &none  &none  &none  &none  &none  &none  &none
-                          &none            &none            &none            &none            &none    &none  &none  &none  &none  &none
+&none  &bt BT_SEL 0      &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4              &none   &none  &none  &none  &none         &none
+&none  &bt BT_CLR        &bt BT_CLR_ALL  &none           &none           &none             &none    &none   &none  &none  &none  &out OUT_TOG
+&none  &ext_power EP_TOG &rgb_ug RGB_HUD &rgb_ug RGB_HUI &rgb_ug RGB_SAD &rgb_ug RGB_SAI            &none   &none  &none  &none  &none         &none
+&none  &rgb_ug RGB_BRD   &rgb_ug RGB_BRI &none           &none           &rgb_ug RGB_TOG   &none   &none   &none  &none  &none  &none         &none   &none
+                         &none           &none           &none           &none             &none   &none   &none  &none  &none  &none
             >;
         };
     };
