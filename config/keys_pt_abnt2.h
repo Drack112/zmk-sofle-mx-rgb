@@ -13,7 +13,7 @@
  * │  Ç ç                 │  SEMI    (OEM_1)         │  ç / Ç       │
  * │  ~ ^    (dead keys)  │  SQT     (OEM_7)         │  dead tilde / circumflex │
  * │  } ]                 │  BSLH    (OEM_5)         │  } / ]       │
- * │  \ |    (non-US)     │  NUBS    (OEM_102)       │  \ / |       │
+ * │  | \    (non-US)     │  NUBS    (OEM_102)       │  | / \       │
  * │  , <                 │  COMMA                   │  , / <       │
  * │  . >                 │  DOT                     │  . / >       │
  * │  ; :    (OEM_2)      │  FSLH                    │  ; / :       │
@@ -42,8 +42,8 @@
 #define PT_RBRC         BSLH            /* }  unshifted  (OEM_5)        */
 #define PT_RBKT         LS(BSLH)        /* ]  shifted                   */
 
-#define PT_BACKSLASH    NON_US_BSLH     /* \  unshifted  (OEM_102)      */
-#define PT_PIPE         LS(NON_US_BSLH) /* |  shifted                   */
+#define PT_PIPE         NON_US_BSLH     /* |  unshifted  (OEM_102)      */
+#define PT_BACKSLASH    LS(NON_US_BSLH) /* \  shifted    (OEM_102)      */
 
 #define PT_SLASH        INT1            /* /  unshifted  (ABNT_C1)      */
 #define PT_QMARK        LS(INT1)        /* ?  shifted                   */
@@ -75,11 +75,13 @@
 #define PT_HASH         LS(N3)          /* #                            */
 #define PT_DOLLAR       LS(N4)          /* $                            */
 #define PT_PERCENT      LS(N5)          /* %                            */
-#define PT_CARET        LS(N6)          /* ¨  (diaeresis) — shifted 6   */
+#define PT_DIAERESIS    LS(N6)          /* ¨  diaeresis  — shifted 6 on ABNT2  */
+#define PT_CARET        LS(SQT)         /* ^  caret = dead circ key shifted    */
 #define PT_AMPERSAND    LS(N7)          /* &                            */
 #define PT_ASTERISK     LS(N8)          /* *                            */
 #define PT_LPAR         LS(N9)          /* (                            */
 #define PT_RPAR         LS(N0)          /* )                            */
 
-#define PT_SQT          GRAVE           /* alias: single quote = PT_QUOT*/
-#define PT_DQT          LS(GRAVE)       /* alias: double quote          */
+#define PT_SQT          GRAVE           /* alias for PT_QUOT — single quote */
+#define PT_DQT          LS(GRAVE)       /* alias for PT_DQUOT — double quote */
+
