@@ -24,19 +24,18 @@
  * │    Extra thumb (R)     →  BSPC passthrough                      │
  * │    Encoders            →  vol up/down (L) · pg up/down (R)      │
  * ├──────────────────────────────────────────────────────────────────┤
- * │  PT-BR dead keys  (Sym layer = hold BKSP)                       │
+ * │  PT-BR dead keys  (Sym layer = hold [2])                        │
  * │    ´ position  →  PT_ACUTE dead acute     á é í ó ú             │
  * │    ` position  →  PT_GRAVE dead grave     à                     │
  * │    ~ position  →  PT_TILDE dead tilde     ã õ                   │
  * │    ^ position  →  PT_CIRC  dead circumflex â ê ô                │
- * │    Ç hold      →  PT_TILDE dead tilde (base layer shortcut)     │
  * ├──────────────────────────────────────────────────────────────────┤
  * │  Key grid (combo position reference, 0-indexed)                  │
  * │   Row 0:  '=0   1=1  2=2  3=3  4=4  5=5    6=6  7=7  8=8  9=9  0=10  -=11  │
  * │   Row 1:  TAB=12 Q=13 W=14 E=15 R=16 T=17   Y=18 U=19 I=20 O=21 P=22 DEL=23 │
  * │   Row 2:  ESC=24 A=25 S=26 D=27 F=28 G=29   H=30 J=31 K=32 L=33 Ç=34 ~=35  │
  * │   Row 3: LSH=36 Z=37 X=38 C=39 V=40 B=41 [enc] [enc] N=42 M=43 ,=44 .=45 ;=46 RSH=47 │
- * │   Thumb: GUI=48 ALT=49 CTL=50 [4]=51 SPC=52  BSP=53 [3]=54 ENT=55 CTL=56 RALT=57 │
+ * │   Thumb: GUI=48 ALT=49 CTL=50 [2]=51 [1]=52 SPC=52  BSP=53 ENT=55 [3]=54 CTL=56 RALT=57 │
  * └──────────────────────────────────────────────────────────────────┘
  */
 
@@ -138,7 +137,7 @@
          * CAPS  A    S    D    F    G  │  H    J    K    L   Ç   ~/´
          * LSH  Z/GUI  X    C    V    B  │  B    N    M    ,    .    /
          *
-         *      CTL  ALT  [3]  [1] SPC  │ BSP  ENT  [2]  RALT CTL
+         *      CTL  ALT  [2]  [1] SPC  │ BSP  ENT  [3]  RALT CTL
          *
          * ══════════════════════════════════════════════════════════ */
 
@@ -158,20 +157,20 @@
         /* ══════════════════════════════════════════════════════════
          * LAYER 1 — NUMBERS / SYMBOLS  (hold [1])
          *
-         *        F1   F2   F3   F4   F5  │  F6   F7   F8   F9  F10  F12
-         *   |    _    -    =    +  │  {    }    [    ]    '    \
-         *        !    @    #    $    %   │  ¨    &    *    (    )    ;
-         *
-         *       ___  ___  ___  ___  ___ │  ___  ___  ___  ___  ___
+         *   ___  F1   F2   F3   F4   F5  │  F6   F7   F8   F9  F10  F12
+         *   ___   |    _    -    =    +   │  {    }    [    ]    '"   \
+         *   ___   !    @    #    $    %   │  ^    &    *    (    )    ;
+         *   ___  ___  ___  ___  ___  ___  │ ___  ___  ___  ___  ___  ___
+         *        ___  ___  ___  ___  ___  │ ___  ___  ___  ___  ___
          * ══════════════════════════════════════════════════════════ */
 
         lower_layer {
             display-name = "num";
             bindings = <
-&trans  &kp F1       &kp F2     &kp F3        &kp F4         &kp F5                            &kp F6        &kp F7            &kp F8               &kp F9                &kp F10                               &kp F12
-&trans  &kp PT_PIPE  &kp UNDER  &kp PT_MINUS  &kp PT_EQUAL   &kp PT_PLUS                       &kp PT_LBRC   &kp PT_RBRC       &kp PT_LEFT_BRACKET  &kp PT_RIGHT_BRACKET  &hm PT_SINGLE_QUOTE PT_DOUBLE_QUOTES  &kp PT_BACKSLASH
-&trans  &kp PT_EXCL  &kp PT_AT  &kp PT_HASH   &kp PT_DOLLAR  &kp PT_PERCENT                    &kp PT_CARET  &kp PT_AMPERSAND  &kp PT_ASTERISK      &kp PT_LPAR           &kp PT_RPAR                           &kp PT_SEMI
-&trans  &trans       &trans     &trans        &trans         &trans          &trans    &trans  &trans        &trans            &trans               &trans                &trans                                &trans
+&trans  &kp F1       &kp F2     &kp F3        &kp F4         &kp F5                            &kp F6        &kp F7            &kp F8               &kp F9                &kp F10                              &kp F12
+&trans  &kp PT_PIPE  &kp UNDER  &kp PT_MINUS  &kp PT_EQUAL   &kp PT_PLUS                       &kp PT_LBRC   &kp PT_RBRC       &kp PT_LEFT_BRACKET  &kp PT_RIGHT_BRACKET  &hm PT_SINGLE_QUOTE PT_DOUBLE_QUOTE  &kp PT_BACKSLASH
+&trans  &kp PT_EXCL  &kp PT_AT  &kp PT_HASH   &kp PT_DOLLAR  &kp PT_PERCENT                    &kp PT_CARET  &kp PT_AMPERSAND  &kp PT_ASTERISK      &kp PT_LPAR           &kp PT_RPAR                          &kp PT_SEMI
+&trans  &trans       &trans     &trans        &trans         &trans          &trans    &trans  &trans        &trans            &trans               &trans                &trans                               &trans
                      &trans     &trans        &trans         &trans          &trans    &trans  &trans        &trans            &trans               &trans
             >;
 
@@ -181,26 +180,34 @@
         /* ══════════════════════════════════════════════════════════
          * LAYER 2 — SYMBOLS / DEAD KEYS  (hold [2])
          *
-         *        !    @    #    $    %   │  ¨    &    *    (    )
-         *        |    _    -    =    +   │  {    }    [    ]    ´
-         *        `    ^    \    <    >   │  ?    "    :    ;    .
-         *                                │       /    '
-         *
-         * PT-BR dead keys:
-         *   PT_ACUTE  →  tap then a/e/i/o/u = á é í ó ú
-         *   PT_GRAVE  →  tap then a = à
-         *   PT_CIRC   →  tap then a/e/o = â ê ô
-         *   PT_TILDE  →  tap then a/o = ã õ
+         *   ___   !    @    #    $    %   │  ^    &    *    (    )   ___
+         *   ___   |    _    -    =    +   │  {    }    [    ]    ´   \
+         *   ___   `    ~    ^    <    >   │  ?    "    :    ;    .   ___
+         *   ___  ___  ___  ___  ___  ___  │ ___  ___  ___  ___  ___ ___
+         *        ___  ___  ___  ___  ___  │ ___  ___  ___  ___  ___
          * ══════════════════════════════════════════════════════════ */
+
+        sym_layer {
+            display-name = "sym";
+            bindings = <
+&trans  &kp PT_EXCL   &kp PT_AT     &kp PT_HASH   &kp PT_DOLLAR  &kp PT_PERCENT                    &kp PT_CARET  &kp PT_AMPERSAND      &kp PT_ASTERISK  &kp PT_LPAR  &kp PT_RPAR   &trans
+&trans  &kp PT_PIPE   &kp UNDER     &kp PT_MINUS  &kp PT_EQUAL   &kp PT_PLUS                       &kp PT_LBRC   &kp PT_RBRC           &kp PT_LBKT      &kp PT_RBKT  &kp PT_ACUTE  &kp PT_BACKSLASH
+&trans  &kp PT_GRAVE  &kp PT_TILDE  &kp PT_CIRC   &kp PT_LT      &kp PT_GT                         &kp PT_QMARK  &kp PT_DOUBLE_QUOTE   &kp PT_COLON     &kp PT_SEMI  &kp PT_DOT    &trans
+&trans  &trans        &trans        &trans        &trans         &trans          &trans    &trans  &trans        &trans                &trans           &trans       &trans        &trans
+                      &trans        &trans        &trans         &trans          &trans    &trans  &trans        &trans                &trans           &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
         /* ══════════════════════════════════════════════════════════
          * LAYER 3 — FUNCTION KEYS  (hold [3])
          *
-         *       F1   F2   F3   F4   F5  │  F6   F7   F8   F9  F10
-         *      F11  F12   _    _    _   │   _    _    ↑    _    _
-         *            _    _    _    _   │   _    ←    ↓    →    _
-         *            _    _    _    _   │   _  HOME  END   _    _
-         *
-         *       _    _    _    _   ___  │  ___   _    _    _   BOOT
+         *   ___  F1   F2   F3   F4   F5  │  F6   F7   F8   F9  F10  ___
+         *   ___  F11  F12  ___  ___  ___  │  ___  ___   ↑   ___  ___  ___
+         *   ___  ___  ___  ___  ___  ___  │  ___   ←    ↓    →   ___  ___
+         *   ___  ___  ___  ___  ___  ___  │  ___ HOME  END  ___  ___  BOOT
+         *        ___  ___  ___  ___  ___  │  ___  ___  ___  ___
          * ══════════════════════════════════════════════════════════ */
 
         adjust_layer {
