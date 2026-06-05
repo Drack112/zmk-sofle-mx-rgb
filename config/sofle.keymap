@@ -168,11 +168,11 @@
         lower_layer {
             display-name = "num";
             bindings = <
-&trans  &kp F1       &kp F2     &kp F3        &kp F4         &kp F5                            &kp F6        &kp F7            &kp F8           &kp F9       &kp F10      &kp F12
-&trans  &kp PT_PIPE  &kp UNDER  &kp PT_MINUS  &kp PT_EQUAL   &kp PT_PLUS                       &kp PT_LBRC   &kp PT_RBRC       &kp PT_LBKT      &kp PT_RBKT  &kp SQT      &kp PT_BACKSLASH
-&trans  &kp PT_EXCL  &kp PT_AT  &kp PT_HASH   &kp PT_DOLLAR  &kp PT_PERCENT                    &kp PT_CARET  &kp PT_AMPERSAND  &kp PT_ASTERISK  &kp PT_LPAR  &kp PT_RPAR  &kp PT_SEMI
-&trans  &trans       &trans     &trans        &trans         &trans          &trans    &trans  &trans        &trans            &trans           &trans       &trans       &trans
-                     &trans     &trans        &trans         &trans          &trans    &trans  &trans        &trans            &trans           &trans
+&trans  &kp F1       &kp F2     &kp F3        &kp F4         &kp F5                            &kp F6          &kp F7            &kp F8            &kp F9             &kp F10            &kp F12
+&trans  &kp PT_PIPE  &kp UNDER  &kp PT_MINUS  &kp PT_EQUAL   &kp PT_PLUS                       &kp LEFT_BRACE  &kp RIGHT_BRACE   &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp DOUBLE_QUOTES  &kp PT_BACKSLASH
+&trans  &kp PT_EXCL  &kp PT_AT  &kp PT_HASH   &kp PT_DOLLAR  &kp PT_PERCENT                    &kp PT_CARET    &kp PT_AMPERSAND  &kp PT_ASTERISK   &kp PT_LPAR        &kp PT_RPAR        &kp PT_SEMI
+&trans  &trans       &trans     &trans        &trans         &trans          &trans    &trans  &trans          &trans            &trans            &trans             &trans             &trans
+                     &trans     &trans        &trans         &trans          &trans    &trans  &trans          &trans            &trans            &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
