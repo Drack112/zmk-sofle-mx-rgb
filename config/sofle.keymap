@@ -167,10 +167,10 @@
         lower_layer {
             display-name = "num";
             bindings = <
-&trans  &kp F1       &kp F2     &kp F3        &kp F4         &kp F5                            &kp F6        &kp F7            &kp F8               &kp F9                &kp F10                              &kp F12
-&trans  &kp PT_PIPE  &kp UNDER  &kp PT_MINUS  &kp PT_EQUAL   &kp PT_PLUS                       &kp PT_LBRC   &kp PT_RBRC       &kp PT_LEFT_BRACKET  &kp PT_RIGHT_BRACKET  &hm PT_SINGLE_QUOTE PT_DOUBLE_QUOTE  &kp PT_BACKSLASH
-&trans  &kp PT_EXCL  &kp PT_AT  &kp PT_HASH   &kp PT_DOLLAR  &kp PT_PERCENT                    &kp PT_CARET  &kp PT_AMPERSAND  &kp PT_ASTERISK      &kp PT_LPAR           &kp PT_RPAR                          &kp PT_SEMI
-&trans  &trans       &trans     &trans        &trans         &trans          &trans    &trans  &trans        &trans            &trans               &trans                &trans                               &trans
+&trans  &kp F1       &kp F2     &kp F3        &kp F4         &kp F5                            &kp F6        &kp F7            &kp F8               &kp F9                &kp F10                               &kp F12
+&trans  &kp PT_PIPE  &kp UNDER  &kp PT_MINUS  &kp PT_EQUAL   &kp PT_PLUS                       &kp PT_LBRC   &kp PT_RBRC       &kp PT_LEFT_BRACKET  &kp PT_RIGHT_BRACKET  &hm PT_SINGLE_QUOTE PT_DOUBLE_QUOTES  &kp PT_BACKSLASH
+&trans  &kp PT_EXCL  &kp PT_AT  &kp PT_HASH   &kp PT_DOLLAR  &kp PT_PERCENT                    &kp PT_CARET  &kp PT_AMPERSAND  &kp PT_ASTERISK      &kp PT_LPAR           &kp PT_RPAR                           &kp PT_SEMI
+&trans  &trans       &trans     &trans        &trans         &trans          &trans    &trans  &trans        &trans            &trans               &trans                &trans                                &trans
                      &trans     &trans        &trans         &trans          &trans    &trans  &trans        &trans            &trans               &trans
             >;
 
@@ -192,7 +192,7 @@
             bindings = <
 &trans  &kp PT_EXCL   &kp PT_AT     &kp PT_HASH   &kp PT_DOLLAR  &kp PT_PERCENT                    &kp PT_CARET  &kp PT_AMPERSAND      &kp PT_ASTERISK  &kp PT_LPAR  &kp PT_RPAR   &trans
 &trans  &kp PT_PIPE   &kp UNDER     &kp PT_MINUS  &kp PT_EQUAL   &kp PT_PLUS                       &kp PT_LBRC   &kp PT_RBRC           &kp PT_LBKT      &kp PT_RBKT  &kp PT_ACUTE  &kp PT_BACKSLASH
-&trans  &kp PT_GRAVE  &kp PT_TILDE  &kp PT_CIRC   &kp PT_LT      &kp PT_GT                         &kp PT_QMARK  &kp PT_DOUBLE_QUOTE   &kp PT_COLON     &kp PT_SEMI  &kp PT_DOT    &trans
+&trans  &kp PT_GRAVE  &kp PT_TILDE  &kp PT_CARET  &kp PT_LT      &kp PT_GT                         &kp PT_QMARK  &kp PT_DOUBLE_QUOTES  &kp PT_COLON     &kp PT_SEMI  &kp PT_DOT    &trans
 &trans  &trans        &trans        &trans        &trans         &trans          &trans    &trans  &trans        &trans                &trans           &trans       &trans        &trans
                       &trans        &trans        &trans         &trans          &trans    &trans  &trans        &trans                &trans           &trans
             >;
