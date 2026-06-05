@@ -3,40 +3,6 @@
  * SPDX-License-Identifier: MIT
  *
  * SOFLE MX RGB — PT-BR ABNT2 KEYMAP
- * Adapted from zmk-config-skeletyl-v2 (Corne 36-key layout)
- *
- * Physical layout : 6×4+5 split + 2 encoders, 58 keys
- * OS layout       : PT-BR ABNT2  (must be selected in OS settings)
- *
- * ┌──────────────────────────────────────────────────────────────────┐
- * │  Layer map                                                       │
- * │    0  Base    QWERTY · home-row mods · ç on right pinky         │
- * │    1  Num     numbers · shifted symbols · { } [ ]               │
- * │    2  Sym     operators · PT-BR dead keys                        │
- * │    3  Fn      F1-F12 · arrows · bootloader                       │
- * │    4  BT      Bluetooth select · output toggle                   │
- * ├──────────────────────────────────────────────────────────────────┤
- * │  Sofle vs Skeletyl expansion                                     │
- * │    Number row (row 0)  →  added on top (1-5 / 6-0)              │
- * │    Outer column left   →  none / TAB / ESC / LSHFT / GUI        │
- * │    Outer column right  →  none / DEL / Ç / RSHFT / RALT        │
- * │    Extra thumb (L)     →  [4] BT layer (was TAB on Skeletyl)    │
- * │    Extra thumb (R)     →  BSPC passthrough                      │
- * │    Encoders            →  vol up/down (L) · pg up/down (R)      │
- * ├──────────────────────────────────────────────────────────────────┤
- * │  PT-BR dead keys  (Sym layer = hold [2])                        │
- * │    ´ position  →  PT_ACUTE dead acute     á é í ó ú             │
- * │    ` position  →  PT_GRAVE dead grave     à                     │
- * │    ~ position  →  PT_TILDE dead tilde     ã õ                   │
- * │    ^ position  →  PT_CIRC  dead circumflex â ê ô                │
- * ├──────────────────────────────────────────────────────────────────┤
- * │  Key grid (combo position reference, 0-indexed)                  │
- * │   Row 0:  '=0   1=1  2=2  3=3  4=4  5=5    6=6  7=7  8=8  9=9  0=10  -=11  │
- * │   Row 1:  TAB=12 Q=13 W=14 E=15 R=16 T=17   Y=18 U=19 I=20 O=21 P=22 DEL=23 │
- * │   Row 2:  ESC=24 A=25 S=26 D=27 F=28 G=29   H=30 J=31 K=32 L=33 Ç=34 ~=35  │
- * │   Row 3: LSH=36 Z=37 X=38 C=39 V=40 B=41 [enc] [enc] N=42 M=43 ,=44 .=45 ;=46 RSH=47 │
- * │   Thumb: GUI=48 ALT=49 CTL=50 [2]=51 [1]=52 SPC=52  BSP=53 ENT=55 [3]=54 CTL=56 RALT=57 │
- * └──────────────────────────────────────────────────────────────────┘
  */
 
 #include <behaviors.dtsi>
@@ -48,13 +14,7 @@
 #include "keys_pt_abnt2.h"
 
 / {
-    /* ─────────────────────────────────────────────────────────────
-     * BEHAVIORS
-     * ───────────────────────────────────────────────────────────── */
-
     behaviors {
-        /* tap = character  ·  hold = modifier */
-
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS";
@@ -65,8 +25,6 @@
             bindings = <&kp>, <&kp>;
         };
 
-        /* single tap = (  ·  double tap = ) */
-
         td_paren: tap_dance_paren {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_PAREN";
@@ -74,8 +32,6 @@
             tapping-term-ms = <200>;
             bindings = <&kp PT_LPAR>, <&kp PT_RPAR>;
         };
-
-        /* single tap = [  ·  double tap = ] */
 
         td_bkt: tap_dance_bracket {
             compatible = "zmk,behavior-tap-dance";
@@ -85,8 +41,6 @@
             bindings = <&kp PT_LBKT>, <&kp PT_RBKT>;
         };
 
-        /* single tap = {  ·  double tap = } */
-
         td_brc: tap_dance_brace {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_BRACE";
@@ -95,13 +49,6 @@
             bindings = <&kp PT_LBRC>, <&kp PT_RBRC>;
         };
     };
-
-    /* ─────────────────────────────────────────────────────────────
-     * COMBOS
-     *   Q+W  (13+14)  → Esc
-     *   P+Ç  (22+34)  → Delete
-     *   Q+A  (13+25)  → Caps Lock
-     * ───────────────────────────────────────────────────────────── */
 
     combos {
         compatible = "zmk,combos";
@@ -122,94 +69,49 @@
         };
     };
 
-    /* ─────────────────────────────────────────────────────────────
-     * KEYMAP
-     * ───────────────────────────────────────────────────────────── */
-
     keymap {
         compatible = "zmk,keymap";
 
-        /* ══════════════════════════════════════════════════════════
-         * LAYER 0 — BASE
-         *
-         *  ESC  1    2    3    4    5  │  6    7    8    9    0   BKSP
-         * TAB   Q    W    E    R    T  │  Y    U    I    O    P    ´`
-         * CAPS  A    S    D    F    G  │  H    J    K    L   Ç   ~/´
-         * LSH  Z/GUI  X    C    V    B  │  B    N    M    ,    .    /
-         *
-         *      CTL  ALT  [2]  [1] SPC  │ BSP  ENT  [3]  RALT CTL
-         *
-         * ══════════════════════════════════════════════════════════ */
-
+        // LAYER 0 - BASE
         default_layer {
             display-name = "base";
             bindings = <
 &kp ESC       &kp N1          &kp N2     &kp N3        &kp N4  &kp N5                               &kp N6     &kp N7  &kp N8         &kp N9     &kp N0            &kp BACKSPACE
-&kp TAB       &kp Q           &kp W      &kp E         &kp R   &kp T                                &kp Y      &kp U   &kp I          &kp O      &kp P             &hm PT_ACUTE PT_CARET
+&kp TAB       &kp Q           &kp W      &kp E         &kp R   &kp T                                &kp Y      &kp U   &kp I          &kp O      &kp P             &hm PT_ACUTE PT_CIRC
 &kp CAPSLOCK  &kp A           &kp S      &kp D         &kp F   &kp G                                &kp H      &kp J   &kp K          &kp L      &kp PT_C_CEDILLA  &hm PT_TILDE PT_ACUTE
-&kp LSHFT     &hm LEFT_GUI Z  &kp X      &kp C         &kp V   &kp B   &kp C_MUTE    &kp C_MUTE     &kp B      &kp N   &kp M          &kp COMMA  &kp DOT           &hm PT_SLASH QUESTION
+&kp LSHFT     &hm LEFT_GUI Z  &kp X      &kp C         &kp V   &kp B   &kp C_MUTE    &kp C_MUTE     &kp B      &kp N   &kp M          &kp COMMA  &kp DOT           &hm PT_SLASH PT_QMARK
                               &kp LCTRL  &kp LEFT_ALT  &mo 2   &mo 1   &kp SPACE     &kp BACKSPACE  &kp ENTER  &mo 3   &kp RIGHT_ALT  &kp RCTRL
             >;
-
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        /* ══════════════════════════════════════════════════════════
-         * LAYER 1 — NUMBERS / SYMBOLS  (hold [1])
-         *
-         *   ___  F1   F2   F3   F4   F5  │  F6   F7   F8   F9  F10  F12
-         *   ___   |    _    -    =    +   │  {    }    [    ]    '"   \
-         *   ___   !    @    #    $    %   │  ^    &    *    (    )    ;
-         *   ___  ___  ___  ___  ___  ___  │ ___  ___  ___  ___  ___  ___
-         *        ___  ___  ___  ___  ___  │ ___  ___  ___  ___  ___
-         * ══════════════════════════════════════════════════════════ */
-
+        // LAYER 1 - NUMBERS / SYMBOLS
         lower_layer {
             display-name = "num";
             bindings = <
-&trans  &kp F1       &kp F2     &kp F3        &kp F4         &kp F5                            &kp F6        &kp F7            &kp F8               &kp F9                &kp F10                               &kp F12
-&trans  &kp PT_PIPE  &kp UNDER  &kp PT_MINUS  &kp PT_EQUAL   &kp PT_PLUS                       &kp PT_LBRC   &kp PT_RBRC       &kp PT_LEFT_BRACKET  &kp PT_RIGHT_BRACKET  &hm PT_SINGLE_QUOTE PT_DOUBLE_QUOTES  &kp PT_BACKSLASH
-&trans  &kp PT_EXCL  &kp PT_AT  &kp PT_HASH   &kp PT_DOLLAR  &kp PT_PERCENT                    &kp PT_CARET  &kp PT_AMPERSAND  &kp PT_ASTERISK      &kp PT_LPAR           &kp PT_RPAR                           &kp PT_SEMI
-&trans  &trans       &trans     &trans        &trans         &trans          &trans    &trans  &trans        &trans            &trans               &trans                &trans                                &trans
-                     &trans     &trans        &trans         &trans          &trans    &trans  &trans        &trans            &trans               &trans
+&trans  &kp F1       &kp F2     &kp F3        &kp F4         &kp F5                            &kp F6        &kp F7            &kp F8        &kp F9      &kp F10         &kp F12
+&trans  &kp PT_PIPE  &kp UNDER  &kp PT_MINUS  &kp PT_EQUAL   &kp PT_PLUS                       &kp PT_LBRC   &kp PT_RBRC       &kp PT_LBKT   &kp PT_RBKT &hm PT_QUOT PT_DQUOT  &kp PT_BACKSLASH
+&trans  &kp PT_EXCL  &kp PT_AT  &kp PT_HASH   &kp PT_DOLLAR  &kp PT_PERCENT                    &kp PT_CARET  &kp PT_AMPERSAND  &kp PT_ASTERISK &kp PT_LPAR &kp PT_RPAR   &kp PT_SEMI
+&trans  &trans       &trans     &trans        &trans         &trans          &trans    &trans  &trans        &trans            &trans        &trans      &trans          &trans
+                     &trans     &trans        &trans         &trans          &trans    &trans  &trans        &trans            &trans        &trans
             >;
-
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        /* ══════════════════════════════════════════════════════════
-         * LAYER 2 — SYMBOLS / DEAD KEYS  (hold [2])
-         *
-         *   ___   !    @    #    $    %   │  ^    &    *    (    )   ___
-         *   ___   |    _    -    =    +   │  {    }    [    ]    ´   \
-         *   ___   `    ~    ^    <    >   │  ?    "    :    ;    .   ___
-         *   ___  ___  ___  ___  ___  ___  │ ___  ___  ___  ___  ___ ___
-         *        ___  ___  ___  ___  ___  │ ___  ___  ___  ___  ___
-         * ══════════════════════════════════════════════════════════ */
-
+        // LAYER 2 - SYMBOLS / DEAD KEYS
         sym_layer {
             display-name = "sym";
             bindings = <
-&trans  &kp PT_EXCL   &kp PT_AT     &kp PT_HASH   &kp PT_DOLLAR  &kp PT_PERCENT                    &kp PT_CARET  &kp PT_AMPERSAND      &kp PT_ASTERISK  &kp PT_LPAR  &kp PT_RPAR   &trans
-&trans  &kp PT_PIPE   &kp UNDER     &kp PT_MINUS  &kp PT_EQUAL   &kp PT_PLUS                       &kp PT_LBRC   &kp PT_RBRC           &kp PT_LBKT      &kp PT_RBKT  &kp PT_ACUTE  &kp PT_BACKSLASH
-&trans  &kp PT_GRAVE  &kp PT_TILDE  &kp PT_CARET  &kp PT_LT      &kp PT_GT                         &kp PT_QMARK  &kp PT_DOUBLE_QUOTES  &kp PT_COLON     &kp PT_SEMI  &kp PT_DOT    &trans
-&trans  &trans        &trans        &trans        &trans         &trans          &trans    &trans  &trans        &trans                &trans           &trans       &trans        &trans
-                      &trans        &trans        &trans         &trans          &trans    &trans  &trans        &trans                &trans           &trans
+&trans  &kp PT_EXCL   &kp PT_AT     &kp PT_HASH   &kp PT_DOLLAR  &kp PT_PERCENT                    &kp PT_CARET  &kp PT_AMPERSAND  &kp PT_ASTERISK  &kp PT_LPAR  &kp PT_RPAR   &trans
+&trans  &kp PT_PIPE   &kp UNDER     &kp PT_MINUS  &kp PT_EQUAL   &kp PT_PLUS                       &kp PT_LBRC   &kp PT_RBRC       &kp PT_LBKT      &kp PT_RBKT  &kp PT_ACUTE  &kp PT_BACKSLASH
+&trans  &kp PT_GRAVE  &kp PT_TILDE  &kp PT_CIRC   &kp PT_LT      &kp PT_GT                         &kp PT_QMARK  &kp PT_DQUOT      &kp PT_COLON     &kp PT_SEMI  &kp PT_DOT    &trans
+&trans  &trans        &trans        &trans        &trans         &trans          &trans    &trans  &trans        &trans            &trans           &trans       &trans        &trans
+                      &trans        &trans        &trans         &trans          &trans    &trans  &trans        &trans            &trans           &trans
             >;
-
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        /* ══════════════════════════════════════════════════════════
-         * LAYER 3 — FUNCTION KEYS  (hold [3])
-         *
-         *   ___  F1   F2   F3   F4   F5  │  F6   F7   F8   F9  F10  ___
-         *   ___  F11  F12  ___  ___  ___  │  ___  ___   ↑   ___  ___  ___
-         *   ___  ___  ___  ___  ___  ___  │  ___   ←    ↓    →   ___  ___
-         *   ___  ___  ___  ___  ___  ___  │  ___ HOME  END  ___  ___  BOOT
-         *        ___  ___  ___  ___  ___  │  ___  ___  ___  ___
-         * ══════════════════════════════════════════════════════════ */
-
+        // LAYER 3 - FUNCTION KEYS
         adjust_layer {
             display-name = "fn";
             bindings = <
@@ -219,21 +121,10 @@
 &trans  &trans   &trans   &trans  &trans  &trans  &trans    &trans  &trans  &kp HOME        &kp END         &trans           &trans   &bootloader
                  &trans   &trans  &trans  &trans  &trans    &trans  &trans  &trans          &trans          &trans
             >;
-
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        /* ══════════════════════════════════════════════════════════
-         * LAYER 4 — BLUETOOTH  (hold TAB)
-         *
-         * BT0  BT1  BT2  BT3  BT4  _  │  _    _    _    _    _   _
-         * CLR  ALL   _    _    _    _  │  _    _    _    _    _  OUT
-         * PWR  HUD  HUI  SAD  SAI  EFF │  _    _    _    _    _   _
-         *  _   BRD  BRI   _    _   TOG │  _    _    _    _    _   _
-         *
-         *       ×    ×    ×    ×   ___ │  ___   ×    ×    ×    ×
-         * ══════════════════════════════════════════════════════════ */
-
+        // LAYER 4 - BLUETOOTH
         bt_layer {
             display-name = "bt";
             bindings = <
