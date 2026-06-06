@@ -12,19 +12,13 @@
  * │  [ {                 │  RBKT    (OEM_6)         │  [ / {       │
  * │  Ç ç                 │  SEMI    (OEM_1)         │  ç / Ç       │
  * │  ~ ^    (dead keys)  │  SQT     (OEM_7)         │  dead tilde / circumflex │
- * │  } ]                 │  BSLH    (OEM_5)         │  } / ]       │
+ * │  ] }                 │  BSLH    (OEM_5)         │  ] unshifted / } shifted │
  * │  | \    (non-US)     │  NUBS    (OEM_102)       │  | / \       │
  * │  , <                 │  COMMA                   │  , / <       │
  * │  . >                 │  DOT                     │  . / >       │
  * │  ; :    (OEM_2)      │  FSLH                    │  ; / :       │
  * │  / ?    (ABNT_C1)    │  INT1                    │  / / ?       │
  * └──────────────────────┴──────────────────────────┴──────────────┘
- *
- * Dead key sequences (OS resolves after the dead key is sent):
- *   PT_ACUTE  then A/E/I/O/U  →  á é í ó ú
- *   PT_GRAVE  then A          →  à
- *   PT_CIRC   then A/E/O      →  â ê ô
- *   PT_TILDE  then A/O        →  ã õ   (or use hm PT_TILDE PT_C_CEDILLA)
  */
 
 #pragma once
@@ -39,8 +33,9 @@
 #define PT_LBKT         RBKT            /* [  unshifted                 */
 #define PT_LBRC         LS(RBKT)        /* {  shifted                   */
 
-#define PT_RBRC         BSLH            /* }  unshifted  (OEM_5)        */
-#define PT_RBKT         LS(BSLH)        /* ]  shifted                   */
+/* BSLH (OEM_5) = ] unshifted, } shifted on ABNT2 */
+#define PT_RBKT         BSLH            /* ]  unshifted  (OEM_5)        */
+#define PT_RBRC         LS(BSLH)        /* }  shifted    (OEM_5)        */
 
 #define PT_PIPE         NON_US_BSLH     /* |  unshifted  (OEM_102)      */
 #define PT_BACKSLASH    LS(NON_US_BSLH) /* \  shifted    (OEM_102)      */
@@ -75,12 +70,12 @@
 #define PT_HASH         LS(N3)          /* #                            */
 #define PT_DOLLAR       LS(N4)          /* $                            */
 #define PT_PERCENT      LS(N5)          /* %                            */
-#define PT_DIAERESIS    LS(N6)          /* ¨  diaeresis  — shifted 6 on ABNT2  */
-#define PT_CARET        LS(SQT)         /* ^  caret = dead circ key shifted    */
+#define PT_DIAERESIS    LS(N6)          /* ¨  diaeresis                 */
+#define PT_CARET        LS(SQT)         /* ^  caret = dead circ shifted */
 #define PT_AMPERSAND    LS(N7)          /* &                            */
 #define PT_ASTERISK     LS(N8)          /* *                            */
 #define PT_LPAR         LS(N9)          /* (                            */
 #define PT_RPAR         LS(N0)          /* )                            */
 
-#define PT_SQT          GRAVE           /* alias for PT_QUOT — single quote */
-#define PT_DQT          LS(GRAVE)       /* alias for PT_DQUOT — double quote */
+#define PT_SQT          GRAVE           /* alias — single quote         */
+#define PT_DQT          LS(GRAVE)       /* alias — double quote         */
