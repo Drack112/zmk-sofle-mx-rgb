@@ -158,11 +158,11 @@
         lower_layer {
             display-name = "num";
             bindings = <
-&trans  &kp F1                    &kp F2     &kp F3        &kp F4        &kp F5                         &kp F6        &kp F7       &kp F8       &kp F9       &kp F10  &kp F12
-&trans  &hm PT_PIPE PT_BACKSLASH  &kp UNDER  &kp PT_MINUS  &kp PT_EQUAL  &kp PT_PLUS                    &kp PT_LBRC   &kp PT_RBRC  &kp PT_LBKT  &kp PT_RBKT  &trans   &trans
-&trans  &trans                    &trans     &trans        &trans        &trans                         &kp PT_COLON  &kp PT_SEMI  &kp PT_SQT   &kp PT_DQT   &trans   &trans
-&trans  &trans                    &trans     &trans        &trans        &trans       &trans    &trans  &trans        &trans       &trans       &trans       &trans   &trans
-                                  &trans     &trans        &trans        &trans       &trans    &trans  &trans        &trans       &trans       &trans
+&trans  &kp F1                    &kp F2     &kp F3        &kp F4        &kp F5                          &kp F6        &kp F7       &kp F8       &kp F9       &kp F10  &kp F12
+&trans  &hm PT_PIPE PT_BACKSLASH  &kp UNDER  &kp PT_MINUS  &kp PT_EQUAL  &kp PT_PLUS                     &kp PT_LBRC   &kp PT_RBRC  &kp PT_LBKT  &kp PT_RBKT  &trans   &trans
+&trans  &trans                    &trans     &trans        &trans        &trans                          &kp PT_COLON  &kp PT_SEMI  &kp PT_SQT   &kp PT_DQT   &trans   &trans
+&trans  &trans                    &trans     &trans        &trans        &trans        &trans    &trans   &trans        &trans       &trans       &trans       &trans   &trans
+                                  &trans     &trans        &trans        &trans        &trans    &trans   &trans        &trans       &trans       &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -182,6 +182,20 @@
          *   PT_CIRC   →  tap then a/e/o = â ê ô
          *   PT_TILDE  →  tap then a/o = ã õ
          * ══════════════════════════════════════════════════════════ */
+
+        sym_layer {
+            display-name = "sym";
+            bindings = <
+&trans  &trans        &trans         &trans         &trans        &trans                          &trans        &trans        &trans        &trans        &trans   &trans
+&trans  &kp PT_PIPE   &kp PT_UNDER   &kp PT_MINUS   &kp PT_EQUAL  &kp PT_PLUS                     &kp PT_LBRC   &kp PT_RBRC   &kp PT_LBKT   &kp PT_RBKT   &trans   &kp PT_ACUTE
+&trans  &kp PT_GRAVE  &kp PT_CARET   &kp PT_BSLASH  &kp PT_LT     &kp PT_GT                       &kp PT_QMARK  &kp PT_DQT    &kp PT_COLON  &kp PT_SEMI   &trans   &kp PT_TILDE
+&trans  &trans        &trans         &trans         &trans        &trans        &trans    &trans   &trans        &kp PT_SLASH  &kp PT_SQT    &trans        &trans   &trans
+                      &trans         &trans         &trans        &trans        &trans    &trans   &trans        &trans        &trans        &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
         /* ══════════════════════════════════════════════════════════
          * LAYER 3 — FUNCTION KEYS  (hold [3])
          *
