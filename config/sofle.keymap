@@ -107,19 +107,9 @@
     combos {
         compatible = "zmk,combos";
 
-        esc {
-            bindings = <&kp ESC>;
-            key-positions = <13 14>;
-        };
-
         del {
             bindings = <&kp DELETE>;
-            key-positions = <22 34>;
-        };
-
-        caps {
-            bindings = <&kp CAPS>;
-            key-positions = <13 25>;
+            key-positions = <11 10>;
         };
     };
 
@@ -145,10 +135,10 @@
         default_layer {
             display-name = "base";
             bindings = <
-&kp ESC       &kp N1          &kp N2     &kp N3        &kp N4  &kp N5                                    &kp N6     &kp N7  &kp N8         &kp N9     &kp N0            &kp BACKSPACE
-&kp TAB       &kp Q           &kp W      &kp E         &kp R   &kp T                                     &kp Y      &kp U   &kp I          &kp O      &kp P             &hm PT_CARET PT_ACUTE
-&kp CAPSLOCK  &kp A           &kp S      &kp D         &kp F   &kp G                                     &kp H      &kp J   &kp K          &kp L      &kp PT_C_CEDILLA  &kp PT_TILDE
-&kp LSHFT     &hm LEFT_GUI Z  &kp X      &kp C         &kp V   &kp B           &kp C_MUTE    &kp C_MUTE  &kp B      &kp N   &kp M          &kp COMMA  &kp DOT           &hm PT_SLASH QUESTION
+&kp ESC       &kp N1          &kp N2     &kp N3        &kp N4  &kp N5                                    &kp N6     &kp N7  &kp N8         &kp N9                  &kp N0            &kp BACKSPACE
+&kp TAB       &kp Q           &kp W      &kp E         &kp R   &kp T                                     &kp Y      &kp U   &kp I          &kp O                   &kp P             &hm PT_CARET PT_ACUTE
+&kp CAPSLOCK  &kp A           &kp S      &kp D         &kp F   &kp G                                     &kp H      &kp J   &kp K          &kp L                   &kp PT_C_CEDILLA  &kp PT_TILDE
+&kp LSHFT     &hm LEFT_GUI Z  &kp X      &kp C         &kp V   &kp B           &kp C_MUTE    &kp C_MUTE  &kp B      &kp N   &kp M          &hm PT_BACKSLASH COMMA  &hm PT_SLASH DOT  &kp PT_QUESTION
                               &kp LCTRL  &kp LEFT_ALT  &mo 3   &kp LEFT_SHIFT  &kp SPACE     &mo 1       &kp ENTER  &mo 2   &kp RIGHT_ALT  &kp RCTRL
             >;
 
@@ -168,10 +158,10 @@
         lower_layer {
             display-name = "num";
             bindings = <
-&trans  &kp F1                    &kp F2     &kp F3        &kp F4        &kp F5                         &kp F6        &kp F7       &kp F8       &kp F9       &kp F10     &kp F12
-&trans  &hm PT_PIPE PT_BACKSLASH  &kp UNDER  &kp PT_MINUS  &kp PT_EQUAL  &kp PT_PLUS                    &kp PT_LBRC   &kp PT_RBRC  &kp PT_LBKT  &kp PT_RBKT  &kp PT_SQT  &kp PT_DQT
-&trans  &trans                    &trans     &trans        &trans        &trans                         &kp PT_COLON  &kp PT_SEMI  &trans       &trans       &trans      &trans
-&trans  &trans                    &trans     &trans        &trans        &trans       &trans    &trans  &trans        &trans       &trans       &trans       &trans      &trans
+&trans  &kp F1                    &kp F2     &kp F3        &kp F4        &kp F5                         &kp F6        &kp F7       &kp F8       &kp F9       &kp F10  &kp F12
+&trans  &hm PT_PIPE PT_BACKSLASH  &kp UNDER  &kp PT_MINUS  &kp PT_EQUAL  &kp PT_PLUS                    &kp PT_LBRC   &kp PT_RBRC  &kp PT_LBKT  &kp PT_RBKT  &trans   &trans
+&trans  &trans                    &trans     &trans        &trans        &trans                         &kp PT_COLON  &kp PT_SEMI  &kp PT_SQT   &kp PT_DQT   &trans   &trans
+&trans  &trans                    &trans     &trans        &trans        &trans       &trans    &trans  &trans        &trans       &trans       &trans       &trans   &trans
                                   &trans     &trans        &trans        &trans       &trans    &trans  &trans        &trans       &trans       &trans
             >;
 
@@ -209,7 +199,7 @@
 &trans  &kp F1   &kp F2   &kp F3  &kp F4  &kp F5                    &kp F6  &kp F7          &kp F8          &kp F9           &kp F10  &trans
 &trans  &kp F11  &kp F12  &trans  &trans  &trans                    &trans  &trans          &kp UP_ARROW    &trans           &trans   &trans
 &trans  &trans   &trans   &trans  &trans  &trans                    &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans   &trans
-&trans  &trans   &trans   &trans  &trans  &trans  &trans    &trans  &trans  &kp HOME        &kp END         &trans           &trans   &bootloader
+&trans  &trans   &trans   &trans  &trans  &trans  &trans    &trans  &trans  &trans          &trans          &trans           &trans   &bootloader
                  &trans   &trans  &trans  &trans  &trans    &trans  &trans  &trans          &trans          &trans
             >;
 
